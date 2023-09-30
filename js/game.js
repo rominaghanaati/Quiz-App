@@ -1,5 +1,7 @@
 import { formatData } from "./helper.js";
 
+const level = localStorage.getItem("level") || "medium";
+
 const loader = document.querySelector("#loader");
 const container = document.querySelector("#container");
 const questionText = document.querySelector(".question");
@@ -8,11 +10,12 @@ const scoreNumber = document.querySelector("#score");
 const nextButton = document.querySelector(".next-button");
 const finishButton = document.querySelector(".finish-button");
 const questionNumber = document.querySelector("#question-number");
+const error = document.querySelector("#error");
 const answersListArr = Array.from(answersList);
 
 const CORRECT_BONUS = 10;
 const URL = 
-    "https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple";
+    `https://opentdb.com/api.php?amount=10&difficulty=${level}&type=multiple`;
 let formattedData = null;
 let questionIndex = 0;
 let correctAnswer = null;
@@ -21,10 +24,15 @@ let isAccepted = true;
 let questionNo = 1;
 
 const fetchData = async () => {
-    const response = await fetch(URL);
+    try {
+        const response = await fetch(URL);
     const json = await response.json();
     formattedData = formatData(json.results);
     start();
+    } catch (err) {
+        loader.style.display = "none";
+        error.style.display = "block";
+    }
 };
 
 const start = () => {
@@ -37,7 +45,6 @@ const showQuestion = () => {
     const {question, answers, correctAnswerIndex } = 
     formattedData[questionIndex];
     correctAnswer = correctAnswerIndex;
-    console.log(correctAnswer);
     questionText.innerText = question;
     answersListArr.forEach((button, index) => {
         button.innerText = answers[index];

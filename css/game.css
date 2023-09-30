@@ -132,3 +132,10 @@ body {
 .incorrect:hover {
     background-color: #fe6681;
 }
+
+#error {
+    display: none;
+    font-size: 2rem;
+    color: #7733ff;
+    margin-top: 10rem;
+}

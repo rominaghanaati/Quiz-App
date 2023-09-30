@@ -21,16 +21,11 @@ a {
     transition: all 0.3s ease-in;
 }
 
-.play {
-    padding: 20px 40px;
+.play, .dificaltly-level, .score {
+    padding: 20px 30px;
     font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.dificaltly-level, .score {
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
+    border-radius: 20px;
+    width: 300px;
 }
 
 a:hover {

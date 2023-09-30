@@ -14,7 +14,7 @@ const saveHandler = () => {
     } else {
         const finalScore = {name: userName, score}
         highScores.push(finalScore);
-        highScores.sort((a,b) => {b.score - a.score});
+        highScores.sort((a,b) => b.score - a.score);
         highScores.splice(10);
 
         localStorage.setItem("highScores", JSON.stringify(highScores));
