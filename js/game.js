@@ -86,7 +86,7 @@ const removeClasses = () => {
 const finishHandler = () => {
     localStorage.setItem("score", JSON.stringify(score));
     window.location.assign("./end.html");
-}
+};
 
 window.addEventListener("load", fetchData);
 nextButton.addEventListener("click", nextHandler);

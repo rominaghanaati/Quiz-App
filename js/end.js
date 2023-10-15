@@ -10,7 +10,7 @@ scoreEle.innerText = score;
 const saveHandler = () => {
     const userName = input.value;
     if(!userName || !score) {
-        alert("invalid username or score");
+        alert("invalid username or score"); 
     } else {
         const finalScore = {name: userName, score}
         highScores.push(finalScore);
